@@ -3,11 +3,12 @@ import User from "../models/user.model.js";
 import generateTokenandSetCookie from "../utils/generateToken.js";
 export const signup = async (req, res) => {
     try {
-        const {fullName, username, password, confirmedpass, gender} = req.body;
-        if(password !== confirmedpass) {
-            return res.status(400).json({error:"Passwords do not match"})
+        const {fullName, username, password, confirmedPass, gender} = req.body;
+        if(password !== confirmedPass) {
+            return res.status(400).json({error:"Passwords don't match!"})
         }
-        const user = await User.findOne({username});
+        const user = await User.findOne({ username });
+        
         if(user) {
             return res.status(400).json({error:"Username already exists"})
         }
@@ -23,9 +24,9 @@ export const signup = async (req, res) => {
         const newUser = new User({
             fullName,
             username,
-            password:hashedPassword,
+            password: hashedPassword,
             gender,
-            profilepic: gender === "male" ? boyProfilePic : girlProfilePic
+            profilepic: gender === "male" || gender === "other" ? boyProfilePic : girlProfilePic
         })
 
         if(newUser) {
