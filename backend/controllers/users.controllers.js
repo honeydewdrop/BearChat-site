@@ -8,7 +8,7 @@ export const getUsersForSidebar = async (req, res) => {
              _id: { $ne: loggedInUserId}, // find every user in db except for one that is not equal to the logged in w/ $ne
         }).select("-password");
 
-        res.status(200).json(filteredUsers);
+        res.status(200).json(filteredUsers); // show only the users who are not the logged in one
 
     } catch (error) {
     console.log("Error in getUsersForSidebar controller", error.message);

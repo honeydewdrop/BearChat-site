@@ -4,8 +4,8 @@ import { getReceiverSocketId, io } from "../socket/socket.js"; // Ensure `io` is
 
 export const sendMessage = async (req, res) => {
   try {
-    const { message } = req.body;
-    const { id: receiverId } = req.params;
+    const { message } = req.body; // messagne is assigned as the request body
+    const { id: receiverId } = req.params; // id is set to request params and renamed into receiverId
     const senderId = req.user._id;
 
     // Find or create a conversation
@@ -15,7 +15,7 @@ export const sendMessage = async (req, res) => {
 
     if (!conversation) {
       conversation = await Conversation.create({
-        participants: [senderId, receiverId],
+        participants: [senderId, receiverId], // if there isn't already a convo, create one with the participants being the sender and receiver
       });
     }
 
@@ -23,12 +23,12 @@ export const sendMessage = async (req, res) => {
     const newMessage = new Message({
       senderId,
       receiverId,
-      message,
+      message, 
     });
 
     if (newMessage) {
       conversation.messages.push(newMessage._id);
-    }
+    } // add the new message into the message array
 
     await Promise.all([conversation.save(), newMessage.save()]);
 
@@ -47,14 +47,14 @@ export const sendMessage = async (req, res) => {
 
 export const getMessages = async (req, res) => {
   try {
-    const { id: userToChatId } = req.params;
+    const { id: userToChatId } = req.params; // id set to req params then renamed to userTochatId
     const senderId = req.user._id;
 
     const conversation = await Conversation.findOne({
       participants: { $all: [senderId, userToChatId] },
-    }).populate("messages");
+    }).populate("messages"); // get the conversation with the correct sender and receiverId and add the messages you get into it
 
-    if (!conversation) return res.status(200).json([]);
+    if (!conversation) return res.status(200).json([]); // if no conversation then there is nothing thatll come up
     res.status(200).json(conversation.messages);
   } catch (error) {
     console.log("Error in getMessages controller", error.message);

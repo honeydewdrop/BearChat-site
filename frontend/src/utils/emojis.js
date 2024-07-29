@@ -16,5 +16,5 @@ export const cuteEmojis = [
 ]
 
 export const getRandomEmoji = () => {
-    return cuteEmojis[Math.floor(Math.random() * cuteEmojis.length)]
+    return cuteEmojis[Math.floor(Math.random() * cuteEmojis.length)] // pick a random emoji out of the list
 }

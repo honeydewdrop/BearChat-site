@@ -1,4 +1,0 @@
-07/01/24: Created user schema. I picked the bear profile picture API because I did not want only mal/female pictures.
-Nodemon: auto updates localhost while dev
-used bcrypt for salt and hashing. tested some dummy users using Postman. I checked in MongoDb and the passwords were hashed.
-made authentican routes for signing up logging in and logging out

@@ -1,32 +1,48 @@
 import React from 'react';
 import { useAuthContext } from "../../context/AuthContext";
 import useConversation from "../../zustand/useConversation";
-import { extractTime } from '../../utils/extractTime'; // if not default export use curly braces
+import { extractTime } from '../../utils/extractTime'; // If not default export, use curly braces
 
+// Functional component to display a single message
 const Message = ({ message }) => {
+  // Get the authenticated user's context
   const { authUser } = useAuthContext();
+  // Get the selected conversation from the zustand store
   const { selectedConversation } = useConversation();
+  // Check if the message is sent by the authenticated user
   const fromMe = message.senderId === authUser._id;
+  // Format the message creation time
   const formattedTime = extractTime(message.createdAt);
+  // Determine the CSS class for chat alignment
   const chatClassName = fromMe ? 'chat-end' : 'chat-start';
-  const profilepic = fromMe ? authUser.profilepic : selectedConversation?.profilepic;
-  const profilepicUrl = profilepic || 'default-profile-pic-url.jpg'; // Provide a default image URL
+  // Get the profile picture of the other participant in the conversation
+  const profilepic = selectedConversation?.profilepic; // Provide a default image URL if needed
+  // Determine the background color of the message bubble based on the sender
   const bubbleBgColor = fromMe ? 'bg-amber-500' : "";
 
   return (
     <div className={`chat ${chatClassName}`}>
       <div className='chat-image avatar'>
         <div className='w-10 rounded-full'>
-          <img src={profilepic} alt="user avatar" />
+          {/* Display the profile picture */}
+          <img src={profilepic} alt="Profile" />
         </div>
       </div>
-      <div className={`chat-bubble text-white ${bubbleBgColor}`}>{message.message}</div>
-      <div className="chat-footer opacity-50">{formattedTime}</div>
+      <div className={`chat-bubble text-white ${bubbleBgColor}`}>
+        {/* Display the message content */}
+        {message.message}
+      </div>
+      <div className="chat-footer opacity-50">
+        {/* Display the formatted creation time */}
+        {formattedTime}
+      </div>
     </div>
   );
 }
 
+// Export the Message component for use in other parts of the application
 export default Message;
+
 
 
 // import React from 'react'
