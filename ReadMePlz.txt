@@ -81,7 +81,7 @@ Frontend
 
 public
 Tried to find a good background for the website. There are multiple because the device I used was too slow to delete the extras. 
--
+
 src
 assets
 I wanted to implement a sound but backed out on it because I could not find one I liked, I could add it later, though.
