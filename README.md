@@ -22,6 +22,7 @@ Languages/technologies used: Javascript, React.js, MongoDB, Node.js, Express.js,
 Description of Files
 > Backend 
   > Controllers
+> 
 	auth.controllers.js
 Imported bcrypt to hash and salt password. the signup function is an async function because the bcrypt salting, finding a preexisting username. and new user saving are asynchronous and the program does not have to wait for them to be done, especially if there should be an error thrown out. The signup function begins with a try catch that makes fullName, username, password, confirmedPass, and gender become an object that is the body of the request. A comparison is made between the password first typed in and the redo for the confirmation. If they don't match, an error stating that they don't is returned. A user variable is made equivalent to finding a username that already exists in our database collection. If the User exists, an error is returned saying that the username already exists, and the client will not be able to move forward with signing up. 
 	I make a const salt variable and set it to a random salt after ten rounds. I chose extra rounds for some more security. Generating the salt is asynchronous because it is a computationally expensive process and I do not want it to block the main
