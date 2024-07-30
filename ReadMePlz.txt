@@ -78,7 +78,7 @@ DB
 Connects to the MongoDB URI from the ENV file. Use MongoDB for data collection that can be used for both the frontend and backend
 
 Frontend
-
+.
 public
 Tried to find a good background for the website. There are multiple because the device I used was too slow to delete the extras. 
 
