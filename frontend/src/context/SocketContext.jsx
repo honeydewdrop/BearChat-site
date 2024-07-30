@@ -23,7 +23,7 @@ export const SocketContextProvider = ({ children }) => {
         // Check if authUser exists before creating a socket connection
         if (authUser) {
             // Create a new socket connection
-            const newSocket = io("http://localhost:5000", {
+            const newSocket = io("https://bearchat-site.onrender.com/login", {
                 query: {
                     userId: authUser._id,
                 }
