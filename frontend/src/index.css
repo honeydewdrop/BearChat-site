@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body{
-  background:url('C:\Users\samia\OneDrive\Desktop\chat-website\frontend\public\bbg3.jpg');
+  background:url('bbg3.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
