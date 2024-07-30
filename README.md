@@ -12,9 +12,6 @@ I added comments to files as well as writing this document.
 
 How to run from vscode: go to root file. npm run build -> npm start
 
-Potential Bug: Messages appearing on wrong side of sender/receiver. If this happens, a page refresh should fix it. I'm looking for
-a permanent solution. (I think its actually fixed though, now?)
-
 The notification sound I ultimately left unincorporated. I thought it might be a nuisance for people listening
 to other things like a song but I might add it for real in the future. I'd also like to add profile picture variety and freedom
 in the future. Photo upload also sounds like a good future feature.
