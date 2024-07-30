@@ -6,6 +6,8 @@ The website implements visible real-time online statuses through Socket.IO. I ad
 next to conversations in the side bar. There is a search bar that allows users to search for the name of a user they would like
 message.
 
+live site: https://bearchat-site.onrender.com
+
 I added comments to files as well as writing this document. 
 
 How to run from vscode: go to root file. npm run build -> npm start
